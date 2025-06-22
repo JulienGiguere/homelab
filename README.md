@@ -1,10 +1,10 @@
 # Homelab
 
-This is my homelab running on a mini PC at home. It’s a work in progress as I build and improve it.
+This is my k8s homelab running on a mini PC at home. It’s a work in progress as I build and improve it.
 
 ## Current setup
 
-- OS: Debian on mini PC
+- OS: Debian
 
 - K3s Kubernetes cluster
 
@@ -14,4 +14,4 @@ This is my homelab running on a mini PC at home. It’s a work in progress as I 
 
 - ArgoCD with Kustomize for GitOps
 
-- Manual deploy of httpbin app for testing
+- Manual deploy of [httpbin](https://httpbin.jg1g.com/) app for testing
