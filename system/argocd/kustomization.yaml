@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Use the official ArgoCD base
+resources:
+- https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+- ingress.yaml
+
+# Patches to customize ArgoCD for your setup
+patches:
+- path: argocd-server-patch.yaml
+  target:
+    group: apps
+    kind: Deployment
+    name: argocd-server
+    version: v1
+- path: argocd-cmd-params-cm-patch.yaml
+  target:
+    kind: ConfigMap
+    name: argocd-cmd-params-cm
+    version: v1
