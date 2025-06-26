@@ -7,9 +7,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     cert-manager.io/cluster-issuer: letsencrypt-dns
     traefik.ingress.kubernetes.io/router.tls: "true"
-    # Optional: Force redirect to HTTPS
     traefik.ingress.kubernetes.io/backend-protocol: "HTTP"
-    traefik.ingress.kubernetes.io/redirect-entry-point: websecure
+    traefik.ingress.kubernetes.io/redirect-entry-point: web,websecure
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
 spec:
   tls:
