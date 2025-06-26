@@ -12,6 +12,4 @@ This is my k8s homelab running on a mini PC at home. It’s a work in progress a
 
 - Cert-manager + Let's Encrypt for certificates
 
-- ArgoCD with Kustomize for GitOps
-
-- Manual deploy of [httpbin](https://httpbin.jg1g.com/) app for testing
+- First App managed by ArgoCD: [httpbin](https://httpbin.jg1g.com/) 
