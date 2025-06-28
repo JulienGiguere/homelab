@@ -2,6 +2,8 @@
 *.tgz
 charts/
 
+secret.yaml
+
 # Emacs
 *~
 \#*\#

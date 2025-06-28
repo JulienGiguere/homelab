@@ -4,7 +4,7 @@ kind: Kustomization
 # Use the official ArgoCD base
 resources:
 - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-- ingress.yaml
+- tailscale-ingress.yaml
 
 # Patches to customize ArgoCD for your setup
 patches:
@@ -19,3 +19,12 @@ patches:
     kind: ConfigMap
     name: argocd-cmd-params-cm
     version: v1
+- patch: |-
+    - op: remove
+      path: /
+  target:
+    group: networking.k8s.io
+    kind: Ingress
+    name: argocd-server-ingress
+    version: v1
+
