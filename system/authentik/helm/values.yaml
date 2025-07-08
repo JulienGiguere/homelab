@@ -1,0 +1,48 @@
+authentik:
+  error_reporting:
+    enabled: false
+
+server:
+  ingress:
+    enabled: false
+    hosts:
+      - auth.jg1g.com
+
+global:
+  namespace: "authentik"
+  env:
+    - name: AUTHENTIK_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: authentik-secrets
+          key: AUTHENTIK_SECRET_KEY
+    - name: AUTHENTIK_BOOTSTRAP_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: authentik-secrets
+          key: AUTHENTIK_BOOTSTRAP_TOKEN
+    - name: AUTHENTIK_BOOTSTRAP_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-secrets
+          key: AUTHENTIK_BOOTSTRAP_PASSWORD
+    - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-secrets
+          key: AUTHENTIK_POSTGRES_PASSWORD
+
+postgresql:
+  enabled: true
+  auth:
+    existingSecret: authentik-secrets
+    secretKeys:
+        adminPasswordKey: AUTHENTIK_POSTGRES_PASSWORD
+        userPasswordKey: AUTHENTIK_POSTGRES_PASSWORD
+  persistence:
+    enabled: true
+
+redis:
+  enabled: true
+  persistence:
+    enabled: true
