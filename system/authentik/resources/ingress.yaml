@@ -1,3 +1,4 @@
+# External Ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -11,6 +12,36 @@ metadata:
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
     traefik.ingress.kubernetes.io/router.middlewares: authentik-headers@kubernetescrd
 spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - auth.jg1g.com
+      secretName: authentik-tls
+  rules:
+    - host: auth.jg1g.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: authentik-server
+                port:
+                  number: 80
+---
+# Internal Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: authentik-internal
+  namespace: authentik
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+    traefik.ingress.kubernetes.io/router.middlewares: authentik-internal-headers@kubernetescrd
+spec:
+  ingressClassName: traefik
   tls:
     - hosts:
         - auth.jg1g.com
