@@ -4,14 +4,11 @@ metadata:
   name: authentik
   namespace: authentik
   annotations:
-    # Traefik annotations
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
-    # Optional: redirect HTTP to HTTPS
+    cert-manager.io/cluster-issuer: letsencrypt-dns
     traefik.ingress.kubernetes.io/redirect-entry-point: websecure
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    # Custom headers equivalent to your HTTPProxy config
     traefik.ingress.kubernetes.io/router.middlewares: authentik-headers@kubernetescrd
 spec:
   tls:
