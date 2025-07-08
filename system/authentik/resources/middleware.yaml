@@ -1,0 +1,12 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: authentik-headers
+  namespace: authentik
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-Proto: "https"
+    customResponseHeaders:
+      X-Frame-Options: "ALLOW"
+      Content-Security-Policy: "frame-ancestors 'self' https://nextcloud.jg1g.com"

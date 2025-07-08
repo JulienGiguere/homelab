@@ -6,3 +6,4 @@ metadata:
 resources:
   - resources/certificate.yaml
   - resources/httpproxy.yaml
+  - resources/middleware.yaml
