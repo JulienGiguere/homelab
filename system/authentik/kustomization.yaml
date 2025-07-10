@@ -5,6 +5,3 @@ metadata:
   namespace: authentik
 resources:
   - resources/certificate.yaml
-  - resources/ingress.yaml
-  - resources/middleware.yaml
-  - resources/middleware-internal.yaml

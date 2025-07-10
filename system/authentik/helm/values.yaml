@@ -4,9 +4,18 @@ authentik:
 
 server:
   ingress:
-    enabled: false
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-dns
+      traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
     hosts:
       - auth.jg1g.com
+    tls:
+      - secretName: authentik-tls
+        hosts:
+          - auth.jg1g.com
 
 global:
   namespace: "authentik"
@@ -45,4 +54,4 @@ postgresql:
 redis:
   enabled: true
   persistence:
-    enabled: true
+    enabled: truecurl -vk https://auth.jg1g.com
