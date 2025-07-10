@@ -21,31 +21,3 @@ spec:
             name: argocd-server
             port:
               number: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: argocd-public-ingress
-  namespace: argocd
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-dns
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/backend-protocol: "HTTP"
-    traefik.ingress.kubernetes.io/redirect-permanent: "true"
-spec:
-  tls:
-    - hosts:
-      - argocd.jg1g.com
-      secretName: argocd-public-tls
-  rules:
-  - host: argocd.jg1g.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              number: 80
