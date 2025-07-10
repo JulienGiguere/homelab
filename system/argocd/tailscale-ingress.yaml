@@ -31,12 +31,13 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-dns
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/backend-protocol: "HTTP"
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
 spec:
-  ingressClassName: traefik
   tls:
-  - hosts:
-    - argocd.jg1g.com
-    secretName: argocd-tls
+    - hosts:
+      - argocd.jg1g.com
+      secretName: argocd-public-tls
   rules:
   - host: argocd.jg1g.com
     http:
