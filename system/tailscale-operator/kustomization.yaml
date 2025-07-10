@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - manifest.yaml
 - cluster-role.yaml
+- certificate.yaml
