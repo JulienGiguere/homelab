@@ -1,17 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-tailscale-ingress
+  name: argocd-server-ingress
   namespace: argocd
   annotations:
-    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/backend-protocol: "HTTP"
+    traefik.ingress.kubernetes.io/redirect-entry-point: websecure
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
 spec:
-  ingressClassName: tailscale
   tls:
     - hosts:
-      - argocd
+       - argocd.jg1g.com
+      secretName: argocd-server-tls
   rules:
-  - host: argocd
+  - host: argocd.jg1g.com
     http:
       paths:
       - path: /

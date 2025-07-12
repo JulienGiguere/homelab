@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
 - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 - tailscale-ingress.yaml
+- argocd-certificate.yaml
 
 # Patches to customize ArgoCD for your setup
 patches:
