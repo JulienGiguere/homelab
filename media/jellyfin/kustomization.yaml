@@ -6,4 +6,5 @@ resources:
   - jellyfin-ingress.yaml
   - jellyfin-deployment.yaml
   - media-pvc.yaml
+  - jellyfin-pvc.yaml
   - jellyfin-service.yaml

@@ -13,7 +13,7 @@ spec:
     path: media/jellyfin
   destination:
     server: https://kubernetes.default.svc
-    namespace: jellyfin
+    namespace: media
   syncPolicy:
     automated:
       prune: true

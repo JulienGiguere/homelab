@@ -1,0 +1,61 @@
+{
+    "apiVersion": "v1",
+    "kind": "Namespace",
+    "metadata": {
+        "annotations": {
+            "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2025-07-10T19:00:16Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2025-07-10T19:00:16Z\"}]}",
+            "lifecycle.cattle.io/create.namespace-auth": "true"
+        },
+        "creationTimestamp": "2025-07-10T19:00:15Z",
+        "deletionTimestamp": "2025-07-13T19:55:42Z",
+        "labels": {
+            "kubernetes.io/metadata.name": "argocd"
+        },
+        "name": "argocd",
+        "resourceVersion": "4714993",
+        "uid": "7eb40eea-03de-44f7-ac1f-5a88ce5c79d0"
+    },
+    "spec": {
+        "finalizers": []
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastTransitionTime": "2025-07-13T19:55:50Z",
+                "message": "All resources successfully discovered",
+                "reason": "ResourcesDiscovered",
+                "status": "False",
+                "type": "NamespaceDeletionDiscoveryFailure"
+            },
+            {
+                "lastTransitionTime": "2025-07-13T19:55:50Z",
+                "message": "All legacy kube types successfully parsed",
+                "reason": "ParsedGroupVersions",
+                "status": "False",
+                "type": "NamespaceDeletionGroupVersionParsingFailure"
+            },
+            {
+                "lastTransitionTime": "2025-07-13T19:55:50Z",
+                "message": "All content successfully deleted, may be waiting on finalization",
+                "reason": "ContentDeleted",
+                "status": "False",
+                "type": "NamespaceDeletionContentFailure"
+            },
+            {
+                "lastTransitionTime": "2025-07-13T19:55:50Z",
+                "message": "Some resources are remaining: applications.argoproj.io has 5 resource instances",
+                "reason": "SomeResourcesRemain",
+                "status": "True",
+                "type": "NamespaceContentRemaining"
+            },
+            {
+                "lastTransitionTime": "2025-07-13T19:55:50Z",
+                "message": "Some content in the namespace has finalizers remaining: resources-finalizer.argocd.argoproj.io in 5 resource instances",
+                "reason": "SomeFinalizersRemain",
+                "status": "True",
+                "type": "NamespaceFinalizersRemaining"
+            }
+        ],
+        "phase": "Terminating"
+    }
+}
