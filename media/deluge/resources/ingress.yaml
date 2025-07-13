@@ -20,6 +20,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: deluge-service
+            name: deluge
             port:
-              number: 8096
+              number: 8112
