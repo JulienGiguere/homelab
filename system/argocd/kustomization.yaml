@@ -3,8 +3,7 @@ kind: Kustomization
 
 resources:
 - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-- tailscale-ingress.yaml
-- argocd-certificate.yaml
+- argocd-ingress.yaml
 
 patches:
 - path: argocd-server-patch.yaml
@@ -24,6 +23,6 @@ patches:
   target:
     group: networking.k8s.io
     kind: Ingress
-    name: argocd-server-ingress
+    name: argocd-ingress
     version: v1
 

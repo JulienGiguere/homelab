@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/juliengiguere/homelab
     targetRevision: main
-    path: apps/jellyfin
+    path: media/jellyfin
   destination:
     server: https://kubernetes.default.svc
     namespace: jellyfin

@@ -5,5 +5,5 @@ resources:
   - jellyfin-certificate.yaml
   - jellyfin-ingress.yaml
   - jellyfin-deployment.yaml
-  - jellyfin-pvc.yaml
+  - ../media-pvc.yaml
   - jellyfin-service.yaml
