@@ -7,7 +7,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     cert-manager.io/cluster-issuer: letsencrypt-dns
     traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/backend-protocol: "HTTP"
+    traefik.ingress.kubernetes.io/backend-protocol: "HTTPS"
     traefik.ingress.kubernetes.io/redirect-entry-point: websecure
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
 spec:
@@ -25,4 +25,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 80
+              number: 8080
