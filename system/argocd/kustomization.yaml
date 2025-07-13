@@ -23,6 +23,6 @@ patches:
   target:
     group: networking.k8s.io
     kind: Ingress
-    name: argocd-ingress
+    name: argocd-server-ingress
     version: v1
 
