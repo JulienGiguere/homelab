@@ -22,4 +22,4 @@ spec:
               service:
                 name: jellyseer-jellyseerr-chart
                 port:
-                  number: 5055
+                  number: 80
