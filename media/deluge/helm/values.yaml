@@ -27,6 +27,7 @@ persistence:
     storageClass: nfs-rwx
     accessMode: ReadWriteMany
     mountPath: /downloads
+    existingClaim: media-pvc
 
 env:
   PUID: "1000"
