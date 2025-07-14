@@ -20,6 +20,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: jellyseerr
+                name: jellyseer-jellyseerr-chart
                 port:
                   number: 5055
