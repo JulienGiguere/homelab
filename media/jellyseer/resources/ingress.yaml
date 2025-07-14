@@ -10,10 +10,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - jellyseerr.jg1g.com
+        - request.jg1g.com
       secretName: jellyseerr-tls
   rules:
-    - host: jellyseerr.jg1g.com
+    - host: request.jg1g.com
       http:
         paths:
           - path: /
