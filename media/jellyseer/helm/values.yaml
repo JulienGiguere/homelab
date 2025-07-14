@@ -21,11 +21,17 @@ ingress:
   enabled: false
 
 volumes:
-  - name: downloads
+ - name: config
+    persistentVolumeClaim:
+      claimName: jellyseerr-config-pvc
+ - name: downloads
     persistentVolumeClaim:
       claimName: media-pvc
 
 volumeMounts:
+  - name: config
+    mountPath: /config
   - name: downloads
     mountPath: /downloads
     readOnly: true
+ 
