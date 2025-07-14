@@ -1,0 +1,36 @@
+replicaCount: 1
+
+image:
+  registry: ghcr.io
+  repository: fallenbagel/jellyseer
+  tag: latest
+  pullPolicy: IfNotPresent
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: America/Montreal
+  LOG_LEVEL: info
+
+service:
+  type: ClusterIP
+  port: 5055
+
+ingress:
+  enabled: false
+
+volumes:
+  - name: config
+    persistentVolumeClaim:
+      claimName: jellyseerr-config-pvc
+  - name: downloads
+    persistentVolumeClaim:
+      claimName: media-pvc
+
+volumeMounts:
+  - name: config
+    mountPath: /config
+  - name: downloads
+    mountPath: /downloads
+    readOnly: true
