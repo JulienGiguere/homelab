@@ -12,6 +12,6 @@ This is my k8s homelab running on a mini PC at home. It’s a work in progress a
 
 - Cert-manager + Let's Encrypt for certificates
 
-- First App managed by ArgoCD: [httpbin](https://httpbin.jg1g.com/) [![](https://status.jg1g.com/api/badge/3/status)](#)
+- First App managed by ArgoCD: [httpbin](https://httpbin.jg1g.com/) [![](https://status.jg1g.com/api/badge/3/status)](#)[![](https://status.jg1g.com/api/badge/Jellyfin/uptime/7d)](#)
 
 - Tailscale integration for secure ArgoCD access
