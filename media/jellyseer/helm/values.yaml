@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   registry: ghcr.io
-  repository: fallenbagel/jellyseer
+  repository: fallenbagel/jellyseerr
   tag: 2.7.0
   pullPolicy: IfNotPresent
 
