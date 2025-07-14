@@ -22,11 +22,11 @@ ingress:
 
 volumes:
  - name: config
-    persistentVolumeClaim:
-      claimName: jellyseerr-config-pvc
+   persistentVolumeClaim:
+     claimName: jellyseerr-config-pvc
  - name: downloads
-    persistentVolumeClaim:
-      claimName: media-pvc
+   persistentVolumeClaim:
+     claimName: media-pvc
 
 volumeMounts:
   - name: config
