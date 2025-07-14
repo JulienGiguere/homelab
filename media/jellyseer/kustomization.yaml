@@ -8,10 +8,3 @@ metadata:
 resources:
   - resources/ingress.yaml
   - resources/pvc.yaml
-
-helmCharts:
-  - name: jellyseerr
-    path: charts/jellyseer-chart
-    version: 2.6.0
-    releaseName: jellyseerr
-    valuesFile: helm/values.yaml
