@@ -6,6 +6,9 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
+imagePullSecrets:
+  - name: ghcr-creds
+
 strategy:
   type: Recreate
 
@@ -29,4 +32,3 @@ volumeMounts:
   - name: downloads
     mountPath: /downloads
     readOnly: true
- 
