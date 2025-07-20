@@ -22,4 +22,4 @@ spec:
           service:
             name: deluge
             port:
-              number: 8112
+              number: 80
