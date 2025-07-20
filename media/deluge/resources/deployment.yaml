@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deluge
+  namespace: media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deluge
+  template:
+    metadata:
+      labels:
+        app: deluge
+    spec:
+      containers:
+        - name: gluetun
+          image: qmcgaw/gluetun
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: mullvad
+            - name: VPN_TYPE
+              value: wireguard
+            - name: WIREGUARD_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mullvad-wireguard
+                  key: private_key
+            - name: WIREGUARD_ADDRESSES
+              value: "10.64.222.2/32"
+            - name: SERVER_COUNTRIES
+              value: Canada
+            - name: TZ
+              value: America/Toronto
+
+        - name: deluge
+          image: lscr.io/linuxserver/deluge:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: America/Toronto
+          ports:
+            - containerPort: 8112
+            - containerPort: 58846
+          volumeMounts:
+            - mountPath: /config
+              name: deluge-config
+            - mountPath: /downloads
+              name: media-storage
+      volumes:
+        - name: deluge-config
+          persistentVolumeClaim:
+            claimName: deluge-config
+        - name: media-storage
+          persistentVolumeClaim:
+            claimName: media-pvc

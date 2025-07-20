@@ -7,10 +7,5 @@ metadata:
 
 resources:
   - resources/ingress.yaml
-
-helmCharts:
-- name: deluge
-  repo: https://k8s-at-home.com/charts/
-  version: 5.4.2
-  releaseName: deluge
-  valuesFile: helm/values.yaml
+  - resources/service.yaml
+  - resources/deployment.yaml
