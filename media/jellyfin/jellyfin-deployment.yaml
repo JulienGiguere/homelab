@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jellyfin
+  name: jellyfin
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+      - name: jellyfin
+        image: ghcr.io/linuxserver/jellyfin:latest
+        imagePullPolicy: Always
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Montreal"
+        - name: JELLYFIN_PublishedServerUrl
+          value: "https://tv.jg1g.com"
+        ports:
+        - containerPort: 8096
+          name: http
+          protocol: TCP
+        - containerPort: 8920
+          name: https
+          protocol: TCP
+        - containerPort: 1900
+          name: dlna
+          protocol: UDP
+        - containerPort: 7359
+          name: discovery
+          protocol: UDP
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: cache
+          mountPath: /cache
+        - name: media
+          mountPath: /media
+          readOnly: true
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8096
+          initialDelaySeconds: 60
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8096
+          initialDelaySeconds: 30
+          periodSeconds: 15
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: jellyfin-config-pvc
+      - name: cache
+        persistentVolumeClaim:
+          claimName: jellyfin-cache-pvc
+      - name: media
+        persistentVolumeClaim:
+          claimName: media-pvc

@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: radarr
+  namespace: media
+
+resources:
+  - resources/ingress.yaml
+
+helmCharts:
+  - name: radarr
+    releaseName: radarr
+    repo: https://k8s-at-home.com/charts/
+    version: 16.3.2
+    valuesFile: helm/values.yaml
