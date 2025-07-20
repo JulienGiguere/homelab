@@ -25,9 +25,6 @@ persistence:
 
   media:
     enabled: true
-    size: 100Gi
-    storageClass: nfs-rwx
-    accessMode: ReadWriteMany
     mountPath: /media
     existingClaim: media-pvc
 
