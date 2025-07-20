@@ -9,3 +9,4 @@ resources:
   - resources/ingress.yaml
   - resources/service.yaml
   - resources/deployment.yaml
+  - resources/deluge-config-pvc.yaml

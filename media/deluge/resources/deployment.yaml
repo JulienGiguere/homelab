@@ -1,43 +1,57 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deluge
+  name: deluge-vpn
   namespace: media
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
-      app: deluge
+      app: deluge-vpn
   template:
     metadata:
       labels:
-        app: deluge
+        app: deluge-vpn
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
-        - name: delugevpn
-          image: binhex/arch-delugevpn:latest
+        - name: gluetun
+          image: qmcgaw/gluetun
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          volumeMounts:
+            - name: wg-conf
+              mountPath: /gluetun/wireguard/wg0.conf
+              subPath: wg0.conf
           env:
-            - name: VPN_ENABLED
-              value: "yes"
-            - name: VPN_PROV
+            - name: VPN_SERVICE_PROVIDER
               value: "custom"
-            - name: VPN_CLIENT
-              value: "wireguard"
             - name: VPN_TYPE
               value: "wireguard"
-            - name: WIREGUARD_CONFIG
-              valueFrom:
-                secretKeyRef:
-                  name: mullvad-wireguard
-                  key: config
+            - name: TZ
+              value: "America/Montreal"
+            - name: DOT
+              value: "off"
+            - name: DNS
+              value: "9.9.9.9,1.1.1.1"  # or "8.8.8.8,8.8.4.4"
+        - name: deluge
+          image: linuxserver/deluge:version-2.0.3-2201906121747ubuntu18.04.1
+          env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "America/Toronto"
-          ports:
-            - containerPort: 8112
+              value: "America/Montreal"
+            - name: UMASK_SET
+              value: "022"
+            - name: DELUGE_LOGLEVEL
+              value: "info"
           volumeMounts:
             - name: config
               mountPath: /config
@@ -45,8 +59,11 @@ spec:
               mountPath: /downloads
       volumes:
         - name: config
-          size: 5Gi
-          storageClass: local-path
+          persistentVolumeClaim:
+            claimName: deluge-config-pvc
         - name: downloads
           persistentVolumeClaim:
             claimName: media-pvc
+        - name: wg-conf
+          secret:
+            secretName: mullvad-wireguard-conf
