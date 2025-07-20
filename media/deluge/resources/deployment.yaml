@@ -56,8 +56,8 @@ spec:
               name: media-storage
       volumes:
         - name: deluge-config
-          persistentVolumeClaim:
-            claimName: deluge-config
+          size: 5Gi
+          storageClass: local-path
         - name: media-storage
           persistentVolumeClaim:
             claimName: media-pvc
