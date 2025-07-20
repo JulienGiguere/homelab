@@ -9,8 +9,9 @@ resources:
   - resources/ingress.yaml
 
 helmCharts:
-- name: radarr
-  repo: https://k8s-at-home.com/charts/
-  version: 17.1.2
-  releaseName: radarr
-  valuesFile: helm/values.yaml
+  - name: radarr
+    releaseName: radarr
+    chart: app-template
+    repo: https://bjw-s-labs.github.io/helm-charts
+    version: 4.1.2
+    valuesFile: helm/values.yaml
