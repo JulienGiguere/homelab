@@ -21,16 +21,6 @@ spec:
               value: "yes"
             - name: VPN_PROV
               value: "mullvad"
-            - name: VPN_USER
-              valueFrom:
-                secretKeyRef:
-                  name: mullvad-credentials
-                  key: username
-            - name: VPN_PASS
-              valueFrom:
-                secretKeyRef:
-                  name: mullvad-credentials
-                  key: password
             - name: VPN_TYPE
               value: "wireguard"
             - name: WIREGUARD_CONFIG
