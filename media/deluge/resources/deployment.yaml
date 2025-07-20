@@ -20,7 +20,9 @@ spec:
             - name: VPN_ENABLED
               value: "yes"
             - name: VPN_PROV
-              value: "mullvad"
+              value: "custom"
+            - name: VPN_CLIENT
+              value: "wireguard"
             - name: VPN_TYPE
               value: "wireguard"
             - name: WIREGUARD_CONFIG
