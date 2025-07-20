@@ -8,12 +8,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/juliengiguere/homelab
+    repoURL: git@github.com:juliengiguere/homelab.git
     path: .
     targetRevision: HEAD
     directory:
       recurse: true
       include: "{**/*.argoapp.yaml,**/*.argoapp.yml}"
+      git:
+        submodules: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
