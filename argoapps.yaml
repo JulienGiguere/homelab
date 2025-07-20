@@ -14,8 +14,6 @@ spec:
     directory:
       recurse: true
       include: "{**/*.argoapp.yaml,**/*.argoapp.yml}"
-      git:
-        submodules: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
