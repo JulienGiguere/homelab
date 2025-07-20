@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deluge-vpn
+  name: deluge
   namespace: media
 spec:
   replicas: 1
@@ -9,11 +9,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: deluge-vpn
+      app: deluge
   template:
     metadata:
       labels:
-        app: deluge-vpn
+        app: deluge
     spec:
       securityContext:
         fsGroup: 1000
