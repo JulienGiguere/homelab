@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: sonarr-ingress
+  name: prowlarr-ingress
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-dns"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -10,16 +10,16 @@ spec:
   ingressClassName: traefik
   tls:
   - hosts:
-    - sonarr.jg1g.com
-    secretName: sonarr-tls
+    - prowlarr.jg1g.com
+    secretName: prowlarr-tls
   rules:
-  - host: sonarr.jg1g.com
+  - host: prowlarr.jg1g.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: sonarr
+            name: prowlarr
             port:
-              number: 8989
+              number: 9696
