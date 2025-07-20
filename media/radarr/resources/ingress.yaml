@@ -20,6 +20,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: deluge
+            name: radarr
             port:
               number: 7878
