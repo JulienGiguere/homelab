@@ -28,6 +28,7 @@ config:
     size: 5Gi
     accessModes:
       - ReadWriteMany
+    storageClassName: nfs-rwx
     name: jellyseerr-config-pvc
     volumeName: jellyseerr-config-nfs-pv
 
