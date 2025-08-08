@@ -23,17 +23,20 @@ service:
 ingress:
   enabled: false
 
+config:
+  persistence:
+    size: 5Gi
+    accessModes:
+      - ReadWriteMany
+    name: jellyseerr-config-pvc
+    volumeName: jellyseerr-config-nfs-pv
+
 volumes:
  - name: downloads
    persistentVolumeClaim:
      claimName: media-pvc
- - name: config
-   persistentVolumeClaim:
-     claimName: jellyseerr-config-nfs-pvc
 
 volumeMounts:
   - name: downloads
     mountPath: /downloads
     readOnly: true
-  - name: config
-    mountPath: /config
