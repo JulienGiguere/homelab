@@ -26,23 +26,22 @@ statusbadge.enabled: false
 
 ## edit secret kubectl edit secret argocd-authentik-secret -n argocd to add annotation app.kubernetes.io/part-of: argocd
 
-dex.config: |
-      connectors:
-        - config:
-            issuer: https://auth.jg1g.com/application/o/argocd/
-            clientID: diJFLxnLM97PbzBc80DIdFUtRQUck2gF5uv6eTbs
-            clientSecret: $argocd-authentik-secret:dex.authentik.clientSecret
-            insecureEnableGroups: true
-            scopes:
-              - openid
-              - profile
-              - email
-          name: authentik
-          type: oidc
-          id: authentik
-
 dex:
   enabled: true
+  config: |
+    connectors:
+      - type: oidc
+        id: authentik
+        name: authentik
+        config:
+          issuer: https://auth.jg1g.com/application/o/argocd/
+          clientID: diJFLxnLM97PbzBc80DIdFUtRQUck2gF5uv6eTbs
+          clientSecret: $argocd-authentik-secret:dex.authentik.clientSecret
+          insecureEnableGroups: true
+          scopes:
+            - openid
+            - profile
+            - email
 
 controller:
   metrics:
