@@ -72,10 +72,10 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: jellyfin-config-pvc
+          claimName: jellyfin-config-nfs-pvc
       - name: cache
         persistentVolumeClaim:
-          claimName: jellyfin-cache-pvc
+          claimName: jellyfin-cache-nfs-pvc
       - name: media
         persistentVolumeClaim:
           claimName: media-pvc

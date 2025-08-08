@@ -1,23 +1,53 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jellyfin-config-pvc
+  name: jellyfin-config-nfs-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 5Gi
-  storageClassName: local-path
+  storageClassName: nfs-rwx
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-config-nfs-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.2.70
+    path: /srv/nfs/jellyfin
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-rwx
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jellyfin-cache-pvc
+  name: jellyfin-cache-nfs-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 10Gi
-  storageClassName: local-path
+  storageClassName: nfs-rwx
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-cache-nfs-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.2.70
+    path: /srv/nfs/jellyfin
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-rwx
