@@ -19,9 +19,8 @@ ingress:
 persistence:
   config:
     enabled: true
-    size: 5Gi
-    storageClass: local-path
     mountPath: /config
+    existingClaim: sonarr-config-nfs-pvc
 
   media:
     enabled: true
