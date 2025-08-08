@@ -27,8 +27,13 @@ volumes:
  - name: downloads
    persistentVolumeClaim:
      claimName: media-pvc
+ - name: config
+   persistentVolumeClaim:
+     claimName: jellyseerr-config-nfs-pvc
 
 volumeMounts:
   - name: downloads
     mountPath: /downloads
     readOnly: true
+  - name: config
+    mountPath: /config
