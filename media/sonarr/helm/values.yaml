@@ -16,6 +16,11 @@ ingress:
   main:
     enabled: false
 
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
 persistence:
   config:
     enabled: true
