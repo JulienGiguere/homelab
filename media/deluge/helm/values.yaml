@@ -40,6 +40,11 @@ addons:
       VPN_SERVICE_PROVIDER: "mullvad"
       TZ: "America/Montreal"
 
+dnsConfig:
+  options:
+    - name: ndots
+      value: "1"
+
 env:
   PUID: "1000"
   PGID: "1000"
