@@ -25,6 +25,21 @@ persistence:
     mountPath: /downloads
     existingClaim: media-pvc
 
+addons:
+  vpn:
+    enabled: true
+    type: gluetun
+    gluetun:
+      image:
+        repository: docker.io/qmcgaw/gluetun
+        tag: v3.30.0
+        pullPolicy: IfNotPresent
+
+    env:
+      PORT_FORWARDING_ENABLED: "true"
+      VPN_SERVICE_PROVIDER: "mullvad"
+      TZ: "America/Montreal"
+
 env:
   PUID: "1000"
   PGID: "1000"
