@@ -22,7 +22,7 @@ persistence:
 
   downloads:
     enabled: true
-    mountPath: /downloads
+    mountPath: /media
     existingClaim: media-pvc
 
 addons:
