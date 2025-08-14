@@ -24,7 +24,7 @@ persistence:
 
   media:
     enabled: true
-    mountPath: /media
+    mountPath: /downloads
     existingClaim: media-pvc
 
 env:
