@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jg1g.com
+  name: jg1g
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: webapp=ghcr.io/juliengiguere/jg1g.com:latest

@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jg1g.com-svc
+  name: jg1g-svc
 spec:
   selector:
-    app: jg1g.com
+    app: jg1g
   ports:
     - name: http
       port: 80
