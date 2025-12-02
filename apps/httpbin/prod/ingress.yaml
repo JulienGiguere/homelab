@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
        - httpbin.jg1g.com
-      secretName: httpbin-tls 
+      secretName: httpbin-tls
   rules:
   - host: httpbin.jg1g.com
     http:
