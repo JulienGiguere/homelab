@@ -20,6 +20,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: jg1g
+            name: jg1g-svc
             port:
               number: 80
