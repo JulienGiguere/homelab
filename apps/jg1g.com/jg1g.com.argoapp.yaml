@@ -11,7 +11,7 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: jg1g.com
+    namespace: jg1g
   source:
     repoURL: https://github.com/juliengiguere/homelab
     targetRevision: main
