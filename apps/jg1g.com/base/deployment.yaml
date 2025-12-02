@@ -22,7 +22,7 @@ spec:
         - name: nginx-run
           emptyDir: {}
       containers:
-        - name: jg1g.com
+        - name: jg1g
           image: ghcr.io/juliengiguere/jg1g.com:latest
           imagePullPolicy: Always
           readinessProbe:
