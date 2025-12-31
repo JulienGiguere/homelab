@@ -20,7 +20,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 192.168.2.70
+    server: 192.168.1.5
     path: /srv/nfs/jellyfin
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-rwx
@@ -47,7 +47,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 192.168.2.70
+    server: 192.168.1.5
     path: /srv/nfs/jellyfin
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-rwx
