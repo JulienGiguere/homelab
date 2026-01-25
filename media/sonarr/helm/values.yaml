@@ -7,7 +7,7 @@ service:
   main:
     ports:
       http:
-        port: 7878
+        port: 8989
 
 ingress:
   main:
