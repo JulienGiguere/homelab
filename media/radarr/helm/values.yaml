@@ -1,5 +1,5 @@
 image:
-  repository: gghcr.io/home-operations/radarr
+  repository: ghcr.io/home-operations/radarr
   tag: 6.1.1
   pullPolicy: IfNotPresent
 
