@@ -1,6 +1,6 @@
 image:
   repository: gghcr.io/home-operations/radarr
-  tag: 17.4.0
+  tag: 6.1.1
   pullPolicy: IfNotPresent
 
 strategy:
