@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/juliengiguere/homelab
     targetRevision: main
-    path: apps/httpbin
+    path: apps/httpbin/prod
   destination:
     server: https://kubernetes.default.svc
     namespace: playground
