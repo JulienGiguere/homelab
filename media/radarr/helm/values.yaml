@@ -27,13 +27,5 @@ persistence:
     mountPath: /downloads
     existingClaim: media-pvc
 
-podSecurityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
-  fsGroup: 1000
-  fsGroupChangePolicy: "OnRootMismatch"
-    
 env:
   TZ: "America/Montreal"
-  PUID: "1000"
-  PGID: "1000"
