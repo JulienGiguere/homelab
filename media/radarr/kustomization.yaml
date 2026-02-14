@@ -12,6 +12,6 @@ resources:
 helmCharts:
   - name: radarr
     releaseName: radarr
-    repo: https://k8s-at-home.com/charts/
-    version: 16.3.2
+    repo: https://k8s-home-lab.github.io/helm-charts/
+    version: 17.4.0
     valuesFile: helm/values.yaml
