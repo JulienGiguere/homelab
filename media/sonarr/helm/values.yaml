@@ -27,10 +27,9 @@ persistence:
 env:
   TZ: "America/Montreal"
 probes:
-# In your sonarr values.yaml
-probes:
   liveness:
     enabled: true
+    custom: true
     spec:
       tcpSocket:
         port: 7878
@@ -42,6 +41,7 @@ probes:
 
   readiness:
     enabled: true
+    custom: true
     spec:
       tcpSocket:
         port: 7878
@@ -53,6 +53,7 @@ probes:
 
   startup:
     enabled: true
+    custom: true
     spec:
       tcpSocket:
         port: 7878
