@@ -1,3 +1,12 @@
+podSecurityContext:
+  fsGroup: 911
+  fsGroupChangePolicy: "OnRootMismatch"
+
+securityContext:
+  runAsUser: 911
+  runAsGroup: 911
+  runAsNonRoot: true
+
 image:
   repository: ghcr.io/home-operations/radarr
   tag: 6.1.1
