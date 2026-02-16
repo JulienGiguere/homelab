@@ -29,3 +29,5 @@ persistence:
 
 env:
   TZ: "America/Montreal"
+  PUID: "911"
+  PGID: "911"
