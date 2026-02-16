@@ -29,36 +29,18 @@ env:
 probes:
   liveness:
     enabled: true
+    ## Set this to true if you wish to specify your own livenessProbe
     custom: true
+    ## The spec field contains the values for the default livenessProbe.
+    ## If you selected custom: true, this field holds the definition of the livenessProbe.
     spec:
-      tcpSocket:
-        port: 7878
+      exec:
+        command:
+        - /usr/bin/env
+        - bash
+        - -c
+        - curl --fail localhost:7878
       initialDelaySeconds: 60
       periodSeconds: 10
-      timeoutSeconds: 2
-      failureThreshold: 5
       successThreshold: 1
-
-  readiness:
-    enabled: true
-    custom: true
-    spec:
-      tcpSocket:
-        port: 7878
-      initialDelaySeconds: 0
-      periodSeconds: 10
-      timeoutSeconds: 1
-      failureThreshold: 3
-      successThreshold: 1
-
-  startup:
-    enabled: true
-    custom: true
-    spec:
-      tcpSocket:
-        port: 7878
-      initialDelaySeconds: 0
-      periodSeconds: 5
-      timeoutSeconds: 1
-      failureThreshold: 30
-      successThreshold: 1
+      timeoutSeconds: 10
