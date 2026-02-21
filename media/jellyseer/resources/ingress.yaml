@@ -23,3 +23,29 @@ spec:
                 name: jellyseer-jellyseerr-chart
                 port:
                   number: 5055
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyseerr-tunnel-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-dns"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - request2.jg1g.com
+      secretName: jellyseerr-tunnel-tls
+  rules:
+    - host: request2.jg1g.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyseer-jellyseerr-chart
+                port:
+                  number: 5055
