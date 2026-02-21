@@ -16,23 +16,20 @@ spec:
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
-        # Run the tunnel by its UUID or name:
-        command: ["cloudflared", "tunnel", "run", "007a56dd-6217-4e42-89bf-f7262ba4bb03"]
+        command: ["cloudflared", "tunnel", "run"]
         volumeMounts:
-        # Mount config:
-        - name: config
+        - name: cloudflared-config
           mountPath: /etc/cloudflared/config.yml
           subPath: config.yml
           readOnly: true
-        # Mount credentials:
-        - name: credentials
+        - name: cloudflared-credentials
           mountPath: /etc/cloudflared/credentials.json
           subPath: credentials.json
           readOnly: true
       volumes:
-      - name: config
+      - name: cloudflared-config
         configMap:
           name: cloudflared-config
-      - name: credentials
+      - name: cloudflared-credentials
         secret:
           secretName: cloudflared-credentials
