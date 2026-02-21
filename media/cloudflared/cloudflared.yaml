@@ -19,11 +19,6 @@ spec:
         command: ["cloudflared", "tunnel", "--no-autoupdate", "run"]
         args: ["--token", "$(TUNNEL_SERVICE_TOKEN_SECRET)"]
         env:
-        - name: TUNNEL_SERVICE_TOKEN_ID
-          valueFrom:
-            secretKeyRef:
-              name: cloudflared-tunnel
-              key: client-id
         - name: TUNNEL_SERVICE_TOKEN_SECRET
           valueFrom:
             secretKeyRef:
