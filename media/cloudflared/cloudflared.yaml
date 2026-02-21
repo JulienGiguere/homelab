@@ -17,10 +17,18 @@ spec:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
         command: ["cloudflared", "tunnel", "--no-autoupdate", "run"]
-        args: ["--token", "$(TUNNEL_SERVICE_TOKEN_SECRET)"]
+        args: ["--config", "/etc/cloudflared/config.yml", "--token", "$(TUNNEL_SERVICE_TOKEN_SECRET)"]
         env:
         - name: TUNNEL_SERVICE_TOKEN_SECRET
           valueFrom:
             secretKeyRef:
               name: cloudflared-tunnel
               key: client-secret
+        volumeMounts:
+        - name: cloudflared-config
+          mountPath: /etc/cloudflared
+          readOnly: true
+      volumes:
+      - name: cloudflared-config
+        configMap:
+          name: cloudflared-config
