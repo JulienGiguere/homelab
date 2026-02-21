@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared
+  namespace: media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflared
+  template:
+    metadata:
+      labels:
+        app: cloudflared
+    spec:
+      containers:
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
+        command: ["cloudflared", "tunnel", "--no-autoupdate", "run", "homelab"]
+        env:
+        - name: TUNNEL_SERVICE_TOKEN_ID
+          valueFrom:
+            secretKeyRef:
+              name: cloudflared-tunnel
+              key: client-id
+        - name: TUNNEL_SERVICE_TOKEN_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: cloudflared-tunnel
+              key: client-secret
