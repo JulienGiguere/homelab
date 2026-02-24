@@ -31,9 +31,7 @@ metadata:
   name: jellyfin-tunnel-ingress
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-dns"
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/forwarded-headers-strategy: "Replace"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure, web
 spec:
   ingressClassName: traefik
   tls:
