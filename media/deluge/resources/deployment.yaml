@@ -66,4 +66,4 @@ spec:
             claimName: media-pvc
         - name: wg-conf
           secret:
-            secretName: mullvad-wireguard-conf
+            secretName: mullvad-wireguard
