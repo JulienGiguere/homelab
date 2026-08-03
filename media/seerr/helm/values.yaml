@@ -1,16 +1,11 @@
-replicaCount: 1
-
 image:
   registry: ghcr.io
-  repository: fallenbagel/jellyseerr
-  tag: 2.7.0
+  repository: seerr-team/seerr
+  tag: v3.4.1
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
   - name: ghcr-creds
-
-strategy:
-  type: Recreate
 
 env:
   TZ: America/Montreal
@@ -29,8 +24,8 @@ config:
     accessModes:
       - ReadWriteMany
     storageClass: nfs-rwx
-    name: jellyseerr-config-pvc
-    volumeName: jellyseerr-config-nfs-pv
+    name: seerr-config-pvc
+    volumeName: seerr-config-nfs-pv
 
 volumes:
  - name: downloads

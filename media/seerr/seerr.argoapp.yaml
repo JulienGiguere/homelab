@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jellyseer
+  name: seerr
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,10 +10,10 @@ spec:
   sources:
     - repoURL: https://github.com/juliengiguere/homelab
       targetRevision: main
-      path: media/jellyseer
+      path: media/seerr
     - repoURL: https://github.com/juliengiguere/homelab
       targetRevision: main
-      path: media/jellyseer/charts/jellyseerr-chart
+      path: media/seerr/charts/seerr-chart
       helm:
         valueFiles:
           - ../../helm/values.yaml
