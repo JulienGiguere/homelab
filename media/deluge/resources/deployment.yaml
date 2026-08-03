@@ -35,10 +35,6 @@ spec:
               value: "wireguard"
             - name: TZ
               value: "America/Montreal"
-            - name: DOT
-              value: "off"
-            - name: DNS
-              value: "9.9.9.9,1.1.1.1"  # or "8.8.8.8,8.8.4.4"
         - name: deluge
           image: linuxserver/deluge:version-2.0.3-2201906121747ubuntu18.04.1
           env:
