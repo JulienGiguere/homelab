@@ -4,9 +4,6 @@ image:
   tag: v3.4.1
   pullPolicy: IfNotPresent
 
-imagePullSecrets:
-  - name: ghcr-creds
-
 env:
   TZ: America/Montreal
   LOG_LEVEL: info
