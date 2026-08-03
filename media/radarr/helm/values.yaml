@@ -40,3 +40,19 @@ env:
   TZ: "America/Montreal"
   PUID: "911"
   PGID: "911"
+
+probes:
+  liveness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command:
+        - /bin/sh
+        - -c
+        - curl -f --max-time 20 http://localhost:7878/ping || exit 1
+      initialDelaySeconds: 60
+      periodSeconds: 15
+      successThreshold: 1
+      failureThreshold: 5
+      timeoutSeconds: 30
